@@ -21,22 +21,22 @@ body {
 }
 
 body {
-  --bg-top: #fbfaf7;
-  --bg-bottom: #e9e4dc;
+  --bg-top: #f7f8fa;
+  --bg-bottom: #e7eaee;
   --panel: #fffefa;
   --panel-border: rgba(20, 20, 18, 0.12);
-  --text: #171614;
-  --muted: #6f6a61;
+  --text: #17181c;
+  --muted: #696f7a;
   --accent: #d71414;
   --accent-soft: rgba(215, 20, 20, 0.1);
-  --track-off: #ded8cf;
-  --track-on: #191817;
+  --track-off: #dfe3e8;
+  --track-on: #17181c;
   --handle: #fffefa;
   --chip: rgba(20, 20, 18, 0.04);
   --chip-border: rgba(20, 20, 18, 0.12);
-  --chip-active: #191817;
+  --chip-active: #17181c;
   --chip-active-text: #fffefa;
-  --button: #191817;
+  --button: #17181c;
   --button-text: #fffefa;
   --indicator: rgba(215, 20, 20, 0.1);
   --error-bg: #fff0ed;
@@ -45,11 +45,11 @@ body {
   --field: #ffffff;
   --field-border: rgba(20, 20, 18, 0.14);
   --focus-ring: rgba(215, 20, 20, 0.3);
-  --shadow: 0 20px 54px rgba(55, 44, 32, 0.14);
+  --shadow: 0 22px 56px rgba(38, 45, 58, 0.16);
   color-scheme: light;
   font-family: ui-sans-serif, "Segoe UI", "SF Pro Text", "Helvetica Neue", sans-serif;
   background:
-    radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.96), transparent 44%),
+    radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.96), transparent 42%),
     linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
   color: var(--text);
   transition: background var(--duration) var(--curve), color var(--duration) var(--curve);
@@ -94,7 +94,7 @@ input {
 
 .panel {
   display: grid;
-  gap: 14px;
+  gap: 12px;
   min-height: calc(540px - 28px);
   padding: 18px;
   border-radius: 12px;
@@ -203,7 +203,7 @@ body[data-theme="dark"] .theme-toggle-icon {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  min-height: 98px;
+  min-height: 92px;
   padding: 10px;
   border-radius: 12px;
   background: var(--track-off);
@@ -309,8 +309,8 @@ body[data-locked="true"] .switch-track {
 
 .lock-panel {
   display: grid;
-  gap: 14px;
-  padding-top: 14px;
+  gap: 12px;
+  padding-top: 12px;
   border-top: 1px solid var(--panel-border);
   background: transparent;
 }
@@ -329,7 +329,7 @@ body[data-locked="true"] .switch-track {
 .timer-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 8px;
 }
 
 .timer-chip {
@@ -417,6 +417,35 @@ body[data-locked="true"] .switch-track {
   cursor: pointer;
 }
 
+.scope-panel {
+  display: grid;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--panel-border);
+}
+
+.scope-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scope-list li {
+  display: flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--chip-border);
+  border-radius: 8px;
+  background: var(--chip);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+}
+
 .lock-button:disabled {
   opacity: 0.58;
   cursor: default;
@@ -471,6 +500,32 @@ body[data-error="true"] .donate-button {
 
   .timer-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .scope-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  html,
+  body {
+    width: 100%;
+    min-height: 100dvh;
+  }
+
+  body {
+    display: grid;
+    place-items: start center;
+  }
+
+  .popup-shell {
+    width: 408px;
+    padding-top: 48px;
+  }
+
+  .panel {
+    min-height: 0;
   }
 }
 

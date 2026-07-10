@@ -65,8 +65,15 @@
 
   function storageGet(defaults) {
     return new Promise((resolve, reject) => {
+      const chromeStorage = getChromeStorage();
+
+      if (!chromeStorage) {
+        resolve(getLocalFallback(defaults));
+        return;
+      }
+
       try {
-        chrome.storage.local.get(defaults, (result) => {
+        chromeStorage.get(defaults, (result) => {
           const errorMessage = chrome.runtime?.lastError?.message;
           if (errorMessage) {
             reject(new Error(errorMessage));
@@ -83,8 +90,16 @@
 
   function storageSet(payload) {
     return new Promise((resolve, reject) => {
+      const chromeStorage = getChromeStorage();
+
+      if (!chromeStorage) {
+        setLocalFallback(payload);
+        resolve();
+        return;
+      }
+
       try {
-        chrome.storage.local.set(payload, () => {
+        chromeStorage.set(payload, () => {
           const errorMessage = chrome.runtime?.lastError?.message;
           if (errorMessage) {
             reject(new Error(errorMessage));
@@ -97,6 +112,45 @@
         reject(error);
       }
     });
+  }
+
+  function getChromeStorage() {
+    return globalThis.chrome?.storage?.local || null;
+  }
+
+  function getLocalFallback(defaults) {
+    const result = { ...defaults };
+    const localStore = globalThis.localStorage;
+
+    if (!localStore) {
+      return result;
+    }
+
+    for (const key of Object.keys(defaults)) {
+      const rawValue = localStore.getItem(key);
+      if (rawValue === null) {
+        continue;
+      }
+
+      try {
+        result[key] = JSON.parse(rawValue);
+      } catch {
+        result[key] = defaults[key];
+      }
+    }
+
+    return result;
+  }
+
+  function setLocalFallback(payload) {
+    const localStore = globalThis.localStorage;
+    if (!localStore) {
+      return;
+    }
+
+    for (const [key, value] of Object.entries(payload)) {
+      localStore.setItem(key, JSON.stringify(value));
+    }
   }
 
   async function getState() {
@@ -150,6 +204,10 @@
   }
 
   function observeState(listener) {
+    if (!globalThis.chrome?.storage?.onChanged) {
+      return () => {};
+    }
+
     const wrapped = (changes, areaName) => {
       if (areaName !== "local" || !changes[STATE_KEY]) {
         return;
@@ -163,6 +221,10 @@
   }
 
   function observeTheme(listener) {
+    if (!globalThis.chrome?.storage?.onChanged) {
+      return () => {};
+    }
+
     const wrapped = (changes, areaName) => {
       if (areaName !== "local" || !changes[THEME_KEY]) {
         return;

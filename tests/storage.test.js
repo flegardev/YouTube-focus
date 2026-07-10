@@ -63,6 +63,22 @@ function createChromeMock(initialStore = {}, options = {}) {
   };
 }
 
+function createLocalStorageMock(initialStore = {}) {
+  const store = { ...initialStore };
+
+  return {
+    getItem(key) {
+      return Object.prototype.hasOwnProperty.call(store, key)
+        ? store[key]
+        : null;
+    },
+    setItem(key, value) {
+      store[key] = String(value);
+    },
+    store
+  };
+}
+
 function loadStorage(initialStore, options) {
   const { chrome, store } = createChromeMock(initialStore, options);
   const context = vm.createContext({
@@ -76,6 +92,22 @@ function loadStorage(initialStore, options) {
   return {
     storage: context.self.FocusModeStorage,
     store
+  };
+}
+
+function loadStorageWithLocalFallback(initialStore = {}) {
+  const localStorage = createLocalStorageMock(initialStore);
+  const context = vm.createContext({
+    localStorage,
+    self: {}
+  });
+  const source = fs.readFileSync(path.join(__dirname, "..", "storage.js"), "utf8");
+
+  vm.runInContext(source, context, { filename: "storage.js" });
+
+  return {
+    storage: context.self.FocusModeStorage,
+    store: localStorage.store
   };
 }
 
@@ -183,6 +215,27 @@ function plain(value) {
       () => storage.getState(),
       /storage unavailable/
     );
+  }
+
+  {
+    const { storage, store } = loadStorageWithLocalFallback({
+      focusModeTheme: JSON.stringify("dark")
+    });
+
+    const state = await storage.setState({
+      focusEnabled: true,
+      lockEnabled: false,
+      lockEndTime: null
+    });
+    const theme = await storage.getTheme();
+
+    assert.deepEqual(plain(state), {
+      focusEnabled: true,
+      lockEnabled: false,
+      lockEndTime: null
+    });
+    assert.equal(theme, "dark");
+    assert.equal(store.focusModeState, JSON.stringify(state));
   }
 
   console.log("storage tests passed");
