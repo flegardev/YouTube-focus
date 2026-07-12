@@ -1,6 +1,6 @@
 {
   "name": "youtube-focus-mode",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "private": true,
   "description": "A Chrome extension that hides distracting YouTube surfaces for intentional watching.",
   "scripts": {
