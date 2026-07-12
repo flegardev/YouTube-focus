@@ -23,7 +23,7 @@ YouTube changes its internal markup frequently. This extension uses a mix of sta
 1. Open Chrome and go to `chrome://extensions`.
 2. Enable Developer mode.
 3. Click Load unpacked.
-4. Select this project folder.
+4. Run `npm run build`, then select `dist/unpacked`.
 5. Open `https://www.youtube.com/` and use the extension popup.
 
 ## Development
@@ -48,7 +48,7 @@ npm run test:ui
 npm run build
 ```
 
-The build script creates `release/youtube-focus-mode-v<manifest-version>.zip` and prints a SHA256 checksum.
+The build script creates a loadable production folder at `dist/unpacked` and a Chrome Web Store ZIP at `dist/youtube-focus-mode-v<manifest-version>.zip`. It excludes tests, source maps, development files, and dependencies. `npm run package` is an alias for this release build.
 
 ## Store Materials
 

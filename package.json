@@ -12,6 +12,7 @@
     "validate": "npm run check && npm run lint && npm test && npm run test:visual",
     "screenshots": "node scripts/capture-final-screenshots.mjs",
     "build": "node scripts/build-release.mjs",
+    "package": "npm run build",
     "build:win": "powershell -ExecutionPolicy Bypass -File scripts/build-release.ps1"
   },
   "devDependencies": {

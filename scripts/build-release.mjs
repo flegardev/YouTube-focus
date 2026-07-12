@@ -7,7 +7,7 @@
 //
 // Usage: node scripts/build-release.mjs [version]
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync, copyFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { deflateRawSync } from 'node:zlib';
 import { dirname, join, resolve } from 'node:path';
@@ -26,6 +26,7 @@ const FILES = [
   'content.js',
   'styles.css',
   'icons/icon16.png',
+  'icons/icon32.png',
   'icons/icon48.png',
   'icons/icon128.png',
 ];
@@ -117,9 +118,15 @@ function buildZip(entries) {
 const entries = FILES.map((name) => ({ name, data: readFileSync(join(ROOT, name)) }));
 const zip = buildZip(entries);
 
-const releaseDir = join(ROOT, 'release');
-mkdirSync(releaseDir, { recursive: true });
-const out = join(releaseDir, `youtube-focus-mode-v${version}.zip`);
+const distDir = join(ROOT, 'dist');
+const unpackedDir = join(distDir, 'unpacked');
+rmSync(unpackedDir, { recursive: true, force: true });
+for (const file of FILES) {
+  const target = join(unpackedDir, file);
+  mkdirSync(dirname(target), { recursive: true });
+  copyFileSync(join(ROOT, file), target);
+}
+const out = join(distDir, `youtube-focus-mode-v${version}.zip`);
 writeFileSync(out, zip);
 
 const sha = createHash('sha256').update(zip).digest('hex');
