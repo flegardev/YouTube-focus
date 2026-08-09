@@ -218,6 +218,17 @@ function plain(value) {
   }
 
   {
+    const { storage } = loadStorage({}, {
+      setError: "storage is read-only"
+    });
+
+    await assert.rejects(
+      () => storage.setTheme("dark"),
+      /storage is read-only/
+    );
+  }
+
+  {
     const { storage, store } = loadStorageWithLocalFallback({
       focusModeTheme: JSON.stringify("dark")
     });
@@ -236,6 +247,18 @@ function plain(value) {
     });
     assert.equal(theme, "dark");
     assert.equal(store.focusModeState, JSON.stringify(state));
+  }
+
+  {
+    const { storage } = loadStorageWithLocalFallback({
+      focusModeState: "not-json"
+    });
+
+    assert.deepEqual(plain(await storage.getState()), {
+      focusEnabled: false,
+      lockEnabled: false,
+      lockEndTime: null
+    });
   }
 
   console.log("storage tests passed");

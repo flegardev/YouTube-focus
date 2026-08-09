@@ -52,10 +52,10 @@ Privacy policy URL:
 Use the public GitHub URL for `PRIVACY.md` or the GitHub Pages URL for `privacy.html`.
 
 GitHub file URL:
-`https://github.com/flegartech-mvp/Youtube-Focus/blob/master/PRIVACY.md`
+`https://github.com/flegardev/youtube-focus/blob/main/PRIVACY.md`
 
-GitHub Pages URL after enabling Pages:
-`https://flegartech-mvp.github.io/Youtube-Focus/privacy.html`
+Support email:
+`flegardev@gmail.com`
 
 User data collection:
 The extension does not collect, sell, transmit, or share user data. Settings are stored locally with `chrome.storage.local` and are not sent to any server.

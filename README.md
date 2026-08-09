@@ -34,7 +34,9 @@ This project has no runtime dependencies.
 npm run validate
 ```
 
-The validation command checks JavaScript syntax, runs ESLint, runs storage tests, and verifies focus-overlay geometry with Playwright.
+The validation command checks JavaScript syntax, runs ESLint, runs storage tests,
+verifies focus-overlay geometry with Playwright, and blocks high-severity dependency
+findings in both the full and production dependency trees.
 
 Run popup and content-script browser smoke tests with:
 
@@ -62,7 +64,7 @@ Use:
 
 ## Support
 
-For production launch, publish a support URL or support email in the Chrome Web Store listing. The current package is privacy-friendly, but users still need somewhere to report selector breakage when YouTube changes.
+Support and selector-breakage reports: [flegardev@gmail.com](mailto:flegardev@gmail.com).
 
 ## License
 
@@ -70,4 +72,4 @@ No license file is currently included. Add one before publishing the source publ
 
 ---
 
-Made by FlegarTech. If this project helped you, you can [support development](https://paypal.me/TiniFlegar).
+Made by Tini Flegar. If this project helped you, you can [support development](https://paypal.me/TiniFlegar).

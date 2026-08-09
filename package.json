@@ -3,13 +3,15 @@
   "version": "3.0.2",
   "private": true,
   "description": "A Chrome extension that hides distracting YouTube surfaces for intentional watching.",
+  "author": "Tini Flegar <flegardev@gmail.com>",
   "scripts": {
     "check": "node --check storage.js && node --check popup.js && node --check content.js",
     "lint": "eslint .",
     "test": "node tests/storage.test.js",
     "test:visual": "node tests/overlay-geometry.test.mjs",
     "test:ui": "playwright test tests/popup-ui.spec.js tests/smokebomb.spec.js",
-    "validate": "npm run check && npm run lint && npm test && npm run test:visual",
+    "audit": "npm audit --audit-level=high && npm audit --omit=dev --audit-level=high",
+    "validate": "npm run check && npm run lint && npm test && npm run test:visual && npm run audit",
     "screenshots": "node scripts/capture-final-screenshots.mjs",
     "build": "node scripts/build-release.mjs",
     "build:win": "powershell -ExecutionPolicy Bypass -File scripts/build-release.ps1"
