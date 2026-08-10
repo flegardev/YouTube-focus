@@ -73,3 +73,11 @@ No license file is currently included. Add one before publishing the source publ
 ---
 
 Made by Tini Flegar. If this project helped you, you can [support development](https://paypal.me/TiniFlegar).
+
+
+## Portfolio & Source Rights
+
+This project is part of the [Tini Flegar Software Engineering Portfolio](https://github.com/flegardev/flegartech-site).
+
+The source code is publicly visible for portfolio review and demonstration. For usage terms and rights, please see [PORTFOLIO_USE.md](PORTFOLIO_USE.md).
+
