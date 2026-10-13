@@ -14,6 +14,7 @@ Use Node.js 24 and the committed npm lockfile.
 
 ```sh
 npm ci
+npm audit --audit-level=high
 npm run lint
 npm run typecheck
 npm test
