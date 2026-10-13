@@ -1,43 +1,27 @@
-name: YouTube Focus CI & Quality Gate
-
+name: Quality
 on:
   push:
-    branches: [main, master, develop]
+    branches: [main]
   pull_request:
-    branches: [main, master]
-
+permissions:
+  contents: read
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: quality-${{ github.ref }}
   cancel-in-progress: true
-
 jobs:
-  quality-gate:
-    name: Typecheck, Lint & Test
+  quality:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 10
     steps:
-      - name: Checkout Code Repository
-        uses: actions/checkout@v4
-
-      - name: Install pnpm Package Manager
-        uses: pnpm/action-setup@v3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          version: 9
-
-      - name: Setup Node.js Runtime (v20 LTS)
-        uses: actions/setup-node@v4
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: 20
-          cache: "pnpm"
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Static Type-Check (Strict TypeScript)
-        run: pnpm run typecheck
-
-      - name: Execute Vitest Automated Test Suite
-        run: pnpm run test
-
-      - name: Verify Production Build Output
-        run: pnpm run build
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
