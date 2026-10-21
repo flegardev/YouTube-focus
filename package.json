@@ -11,7 +11,12 @@
     "lint": "eslint src --ext .ts,.tsx",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "extension:install": "npm ci --prefix extension",
+    "extension:validate": "npm run validate --prefix extension",
+    "extension:build": "npm run build --prefix extension",
+    "extension:package": "npm run package --prefix extension",
+    "extension:test": "npm run test:extension --prefix extension"
   },
   "keywords": [
     "productivity",

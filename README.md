@@ -1,35 +1,52 @@
-# YouTube Focus
+# YouTube Focus Mode
 
-Focus-session calculations, a React timer hook, and distraction summary components.
+Choose which YouTube surfaces to hide: home recommendations, related videos, Shorts, comments and end-screen cards. Use Classic, Intentional watching or Study presets, a timed soft lock and light/dark themes.
 
-## Scope
+[Chrome Web Store](https://chromewebstore.google.com/detail/feineenlljealpgoohilfdfmocmceohk) · [Repository](https://github.com/flegardev/YouTube-focus)
 
-This repository currently contains TypeScript domain logic, hooks, and React components. It does not contain a complete application entry point or a verified hosted product. The build command checks/compiles TypeScript; it does not produce a deployable website. Previously advertised external demo links have been removed because ownership and operation could not be verified.
+## Release status
 
-Source: https://github.com/flegardev/YouTube-focus
+Candidate **3.1.0**; previous version **3.0.3** confirmed from the actual Google update-service package. Upload/submission/publication have not occurred. See [release notes](CHANGELOG.md).
 
-## Development and verification
+The complete extension is in **`extension/`**. The TypeScript modules in `src/` are retained separately and are not the extension entry point. Full historical source was recovered from PR #1, rather than replacing the product with the incomplete module library.
 
-Use Node.js 24 and the committed npm lockfile.
+## Development
+
+Use Node.js 24 and npm.
 
 ```sh
+cd extension
 npm ci
-npm audit --audit-level=high
-npm run lint
-npm run typecheck
-npm test
-npm run build
+npm run validate
+npx playwright install chromium
+npm run test:extension
+npm run package
 ```
 
-These checks passed locally on 2026-10-13. GitHub Actions repeats them on pull requests and changes to main. Tests cover domain behavior; they do not establish live authentication, persistence, or multi-user operation.
+Run `npm run test:ui` for the popup and route fixture suite. `npm run validate` also checks overlay geometry.
 
-## Structure
+## Load unpacked
 
-- `src/services`: domain calculations and workflow behavior.
-- `src/hooks`: React integration.
-- `src/components`: reusable interface components.
-- `src/types` and `src/utils`: types and formatting.
+Choose `extension` in Chrome → Extensions → Developer mode → Load unpacked. Test with a separate profile. Production upgrades must go to the existing Store item; a different unpacked path can have a different extension ID.
 
-## Next useful milestone
+## Architecture and data
 
-Add a small application shell and browser tests before presenting this repository as a working hosted application. Keep demonstration data clearly labeled and avoid claims that exceed the implemented scope.
+Static popup and an isolated YouTube content script. CSS relational selectors handle dynamic recommendations without continuous DOM scanning. Published `focusModeState` and `focusModeTheme` remain unchanged; six boolean controls use `focusModePreferences`. PR #4 was reviewed: its CSS approach was useful, but its incompatible sync schema and missing published lock behavior were not adopted.
+
+## Privacy and permissions
+
+Runtime permissions are unchanged from the recovered published manifest. No analytics backend or remote executable code is added. See [privacy policy](extension/PRIVACY.md). Exports contain private local records; share them only intentionally.
+
+## Limitations
+
+Classic focus preserves the published search-and-watch-only navigation. Disable that explicit setting to retain normal channel navigation. Timed locks are voluntary commitments, not security controls. YouTube can change its DOM; fixture checks do not guarantee every live layout.
+
+## Verification
+
+Automated tests cover actual extension registration, real Chrome storage, legacy-shaped records, restart persistence, user controls and error states. UI fixtures use synthetic, visibly identified sample records. They do not represent the developer’s browsing activity or real car offers. Full live-site playback and all marketplace variants remain manual release checks. Store review/publication are separate from green CI.
+
+## Screenshots
+
+Test fixtures only; these screenshots do not represent real user activity.
+
+![youtube test fixture](docs/screenshots/youtube-after.png)
