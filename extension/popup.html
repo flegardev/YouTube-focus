@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YouTube Focus Mode</title><link rel="stylesheet" href="popup.css"></head>
+<body><main>
+  <header><div class="eyebrow">FLEGARTECH / FOCUS</div>
+  <h1>Take back<br><span>your attention.</span></h1>
+  <p>Watch what you came for, without the rabbit holes.</p></header>
+  <section class="master"><div><strong>Focus mode</strong><small>Distraction-free browsing</small></div>
+    <label class="switch"><input data-key="enabled" type="checkbox" aria-label="Enable focus mode"><span></span></label></section>
+  <div class="section-title">YOUR RULES <span>ON YOUTUBE</span></div>
+  <section class="options">
+    <label><span><strong>Home feed</strong><small>Make your homepage intentional</small></span><input data-key="hideHomeFeed" type="checkbox"></label>
+    <label><span><strong>Side recommendations</strong><small>No next-video rabbit holes</small></span><input data-key="hideRecommendations" type="checkbox"></label>
+    <label><span><strong>Shorts</strong><small>Hide Shorts shelves and shortcuts</small></span><input data-key="hideShorts" type="checkbox"></label>
+    <label><span><strong>Comments</strong><small>Optional distraction-free viewing</small></span><input data-key="hideComments" type="checkbox"></label>
+    <label><span><strong>End-screen cards</strong><small>Finish videos on your terms</small></span><input data-key="hideEndScreens" type="checkbox"></label>
+  </section>
+  <div class="footer"><span id="status" role="status" aria-live="polite">Stored privately in Chrome sync</span>
+  <button id="open" type="button">Open YouTube ↗</button></div>
+</main><script src="config.js"></script><script src="popup.js"></script></body></html>

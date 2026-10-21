@@ -33,3 +33,11 @@ These checks passed locally on 2026-10-13. GitHub Actions repeats them on pull r
 ## Next useful milestone
 
 Add a small application shell and browser tests before presenting this repository as a working hosted application. Keep demonstration data clearly labeled and avoid claims that exceed the implemented scope.
+
+## Installable Chrome extension (development)
+
+The [extension/](./extension) folder contains a working Manifest V3 prototype: toggles to hide the YouTube home feed, watch recommendations, Shorts shelves/shortcuts, optional comments and end-screen cards. Settings use Chrome sync storage; there is no remote analytics.
+
+To test, open chrome://extensions, enable Developer mode, click **Load unpacked**, and select the local extension/ folder. Run npm test for config unit tests.
+
+**Note:** This new prototype is not claimed to be identical to the existing Chrome Web Store release. The YouTube DOM changes frequently; verify selectors manually in Chrome before shipping updates.

@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Focus Mode (development)",
+  "version": "0.1.0",
+  "description": "Local-first distraction-free YouTube interface with configurable focus controls.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YouTube Focus Mode"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://youtube.com/*"
+      ],
+      "js": [
+        "config.js",
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
