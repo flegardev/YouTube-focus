@@ -4,3 +4,11 @@ test-results/
 dist/
 .env
 
+
+
+extension/node_modules/
+extension/dist/
+extension/releases/
+extension/output/
+extension/test-results/
+extension/playwright-report/
