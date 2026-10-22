@@ -13,7 +13,7 @@
         <div class="panel-copy">
           <p class="eyebrow">YouTube</p>
           <h1 class="title">Focus Mode</h1>
-          <p class="subtitle">Remove distractions from YouTube</p>
+          <p class="subtitle">Watch with intention.</p>
         </div>
 
         <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" aria-pressed="false">
@@ -22,7 +22,7 @@
         </button>
       </div>
 
-      <button
+      <div class="focus-hero"><div><span class="hero-label">Your viewing space</span><h2>Less noise.<br>More intention.</h2></div><button
         id="focus-toggle"
         class="switch"
         type="button"
@@ -37,13 +37,13 @@
         </span>
       </button>
 
-      <p class="status" id="focus-status" aria-live="polite">YouTube restored</p>
+      </div><p class="status" id="focus-status" aria-live="polite">YouTube restored</p>
       <p class="lock-indicator" id="lock-indicator" aria-live="polite" hidden>Soft lock: 25 min remaining</p>
       <p class="error-banner" id="popup-error" role="alert" hidden>Could not load saved settings. Try closing and reopening the popup.</p>
 
-      <section class="lock-panel" aria-label="Timed Lock">
+      <nav class="mode-tabs" aria-label="Focus settings"><button type="button" data-tab="view" aria-pressed="true">Your view</button><button type="button" data-tab="session" aria-pressed="false">Focus session</button></nav><section id="onboarding" class="welcome" hidden><strong>A quieter YouTube, your way.</strong><p>Choose what to hide below, then turn Focus on. Everything stays on this device.</p><button type="button" id="welcome-dismiss">Got it</button></section><section class="lock-panel" hidden aria-label="Timed Lock">
         <div class="section-head">
-          <h2 class="section-title">Timed Lock</h2>
+          <h2 class="section-title">Make time for one thing</h2>
           <p class="section-copy">Keep Focus Mode on for a set time. This is a soft commitment, not a security lock.</p>
         </div>
 
@@ -73,9 +73,9 @@
       </section>
 
       <section class="scope-panel" aria-label="Distraction controls">
-        <h2 class="section-title">Make room for what matters</h2>
+        <h2 class="section-title">Choose your viewing mode</h2>
         <label class="preference-row">Preset <select id="focus-preset" aria-label="Focus preset"><option value="custom">Custom</option><option value="legacy">Classic focus</option><option value="balanced">Intentional watching</option><option value="study">Study session</option></select></label>
-        <div id="focus-controls"></div>
+        <details class="granular-controls"><summary>Fine-tune distractions</summary><p class="section-copy">Checked items are hidden while Focus is on.</p><div id="focus-controls"></div></details><details class="save-preset"><summary>Save this as a personal preset</summary><label>Preset name<input id="preset-name" maxlength="32" placeholder="e.g. Evening learning"></label><button id="preset-save" type="button">Save preset</button><button id="preset-delete" type="button" hidden>Delete selected preset</button></details>
         <p id="preferences-status" class="section-copy" role="status">Changes apply to open YouTube tabs.</p>
       </section>
       <section class="scope-panel" aria-label="Hidden distractions" hidden>
@@ -88,7 +88,7 @@
         </ul>
       </section>
 
-      <button id="donate-button" class="donate-button" type="button">Support the creator</button>
+      <button id="pause-button" class="donate-button" type="button">Pause hiding for 5 minutes</button><p id="pause-status" class="section-copy" role="status"></p><button id="donate-button" class="donate-button" type="button">Support the creator</button>
     </section>
   </main>
 

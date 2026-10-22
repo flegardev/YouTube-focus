@@ -19,6 +19,7 @@ let theme = FocusModeStorage.DEFAULT_THEME;
 let selectedDuration = String(LOCK_PRESETS[0]);
 let countdownTimer = 0;
 let hasStorageError = false;
+let pauseEnd = 0;
 
 initialize();
 
@@ -38,6 +39,8 @@ async function initialize() {
 
   render();
   startCountdown();
+  chrome.storage.local.get(['focusModePauseUntil'], data => { pauseEnd = Number(data?.focusModePauseUntil) || 0; render(); });
+  chrome.storage.onChanged.addListener((changes, area) => { if (area === 'local' && changes.focusModePauseUntil) { pauseEnd = Number(changes.focusModePauseUntil.newValue) || 0; render(); } });
 
   focusToggle.addEventListener("click", handleFocusToggle);
   timerGrid.addEventListener("click", handleTimerSelect);
@@ -95,6 +98,7 @@ function handleTimerSelect(event) {
   }
 
   renderTimerSelection();
+  render();
 }
 
 function handleTimerKeydown(event) {
@@ -133,6 +137,7 @@ function handleTimerKeydown(event) {
   }
 
   renderTimerSelection();
+  render();
   nextChip.focus();
 }
 
@@ -230,7 +235,7 @@ function render() {
     lockButton.textContent = "Soft lock active";
     lockButton.disabled = true;
   } else {
-    focusStatus.textContent = enabled ? "Distractions hidden" : "YouTube restored";
+    focusStatus.textContent = enabled ? (pauseEnd > Date.now() ? "Hiding temporarily paused" : "Distractions hidden") : "YouTube restored";
     lockIndicator.hidden = true;
     lockButton.textContent = customDurationValid
       ? `Start ${formatDuration(getSelectedDuration())} soft lock`
@@ -322,6 +327,7 @@ function formatRemaining(remainingMs) {
 function startCountdown() {
   window.clearInterval(countdownTimer);
   countdownTimer = window.setInterval(async () => {
+    if (pauseEnd && pauseEnd <= Date.now()) { pauseEnd = 0; render(); }
     if (!state.lockEnabled) {
       return;
     }

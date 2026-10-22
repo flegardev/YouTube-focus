@@ -50,3 +50,9 @@ Automated tests cover actual extension registration, real Chrome storage, legacy
 Test fixtures only; these screenshots do not represent real user activity.
 
 ![youtube test fixture](docs/screenshots/youtube-after.png)
+
+## Flagship redesign candidate 3.2.0
+
+Choose your view. Keep your intention. Popup view/session navigation; compact preset-first layout; up to ten named presets; reversible five-minute hiding pause with automatic return; keyboard timer correction; light and dark appearances.
+
+[Product and release limits](docs/flagship/PRODUCT.md) · [Research](docs/flagship/RESEARCH.md) · [Store material draft](docs/flagship/STORE_MATERIALS.md). This candidate has not been submitted or published.

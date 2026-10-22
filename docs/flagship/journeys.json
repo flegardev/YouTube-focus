@@ -1,0 +1,21 @@
+[
+  {
+    "product": "YouTube Focus",
+    "passed": true,
+    "performance": {
+      "domContentLoadedMs": [
+        12.699999999720603,
+        13.100000000093132,
+        14.600000000093132,
+        15.600000000093132,
+        18.300000000279397
+      ],
+      "medianMs": 14.600000000093132,
+      "metrics": {
+        "Nodes": 1875,
+        "TaskDuration": 0.063704,
+        "JSHeapUsedSize": 5162444
+      }
+    }
+  }
+]

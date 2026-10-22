@@ -42,6 +42,7 @@ async function youtube() {
     await expect(yt.locator('#secondary')).toBeHidden();
     await expect(yt.locator('#player')).toBeVisible();
     await page.getByLabel('Focus preset').selectOption('balanced');
+    await page.locator('.granular-controls summary').click();
     await expect(yt.locator('#comments')).toBeVisible();
     await expect(yt.locator('.ytp-ce-element')).toBeHidden();
     await yt.evaluate(() => {
@@ -69,6 +70,7 @@ async function youtube() {
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth <= innerWidth));
     await page.screenshot({path:path.join(artifacts,'youtube-after.png'),fullPage:true});
     await page.getByRole('switch').click();
+    await page.getByRole('button',{name:'Focus session',exact:true}).click();
     await page.getByRole('button',{name:'Start 25m soft lock'}).click();
     await expect(page.getByRole('switch')).toBeDisabled();
     const state=await page.evaluate(()=>chrome.storage.local.get(null));

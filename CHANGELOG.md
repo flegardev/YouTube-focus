@@ -1,3 +1,9 @@
+# 3.2.0 — flagship redesign candidate
+
+Popup view/session navigation; compact preset-first layout; up to ten named presets; reversible five-minute hiding pause with automatic return; keyboard timer correction; light and dark appearances.
+
+Not published. YouTube layouts vary. No ads, categorization or guaranteed distraction prevention claims. Voluntary locks can be bypassed by disabling the extension.
+
 # Changelog
 
 ## 3.1.0 — candidate, 2026-10-21

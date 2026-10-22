@@ -14,3 +14,7 @@ The optional support button opens a PayPal page only after the user clicks it. T
 
 ## Candidate 3.1.0
 Granular controls are stored in chrome.storage.local as focusModePreferences. Published state and theme keys remain local. No watched-video analytics, distraction counters or cloud sync are added.
+
+## Candidate 3.2.0
+
+Named preset labels and hiding preferences, a temporary pause deadline and onboarding completion are stored locally. They are not sent to the developer. Deleting a named preset removes its saved label and configuration. Uninstalling the extension removes its local settings.
