@@ -134,6 +134,7 @@ async function youtube() {
       name: 'Start 50m soft lock'
     }).click();
     await expect(page.getByRole('switch')).toBeDisabled();
+    await expect(page.getByRole('button', { name: 'Pause unavailable during lock' })).toBeDisabled();
     await shot(page, 'youtube-session-after');
     await page.getByRole('button', {
       name: 'Toggle theme'

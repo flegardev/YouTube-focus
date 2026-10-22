@@ -96,7 +96,8 @@
   const remove = document.getElementById('preset-delete');
   const pause = document.getElementById('pause-button');
   let saved = [],
-    pauseUntil = 0;
+    pauseUntil = 0,
+    currentState = null;
   function options() {
     for (const option of preset.querySelectorAll('[data-saved]')) option.remove();
     for (const s of saved) {
@@ -181,7 +182,9 @@
   });
   function renderPause() {
     const active = pauseUntil > Date.now();
-    pause.textContent = active ? 'Resume hiding now' : 'Pause hiding for 5 minutes';
+    const locked = currentState && FocusModeStorage.isLocked(currentState);
+    pause.disabled = Boolean(locked);
+    pause.textContent = locked ? 'Pause unavailable during lock' : active ? 'Resume hiding now' : 'Pause hiding for 5 minutes';
     document.getElementById('pause-status').textContent = active ? `Hiding resumes at ${new Date(pauseUntil).toLocaleTimeString([], {
       hour: '2-digit',
       minute: '2-digit'
@@ -216,12 +219,17 @@
       name: s.name.slice(0, 32),
       value: FocusPreferences.normalize(s.value)
     }));
+    currentState = data.focusModeState || null;
     pauseUntil = Number(data.focusModePauseUntil) || 0;
     options();
     renderPause();
     document.getElementById('onboarding').hidden = Boolean(data.focusModeOnboarded || data.focusModeState);
   });
   chrome.storage.onChanged.addListener((changes, area) => {
+    if (area === 'local' && changes.focusModeState) {
+      currentState = changes.focusModeState.newValue || null;
+      renderPause();
+    }
     if (area === 'local' && changes.focusModePauseUntil) {
       pauseUntil = Number(changes.focusModePauseUntil.newValue) || 0;
       renderPause();

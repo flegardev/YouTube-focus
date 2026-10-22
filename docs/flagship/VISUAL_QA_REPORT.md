@@ -14,7 +14,7 @@ Final inspection: headings and controls are readable, folder rows align, empty s
 
 Reviewed: first-run view, compact configured view, expanded granular controls, focus session and dark appearance. See screenshots/youtube-*-after.png.
 
-The first redesign was too tall with every setting exposed. Granular controls and preset naming now use disclosures; the main configured view fits a 380px by 600px viewport. The switch leads the hierarchy, with view/session tabs separating tasks. Named presets and the five-minute pause have visible status. Keyboard timer selection exposed a stale Start label; rendering was corrected and tested.
+The first redesign was too tall with every setting exposed. Granular controls and preset naming now use disclosures; the main configured view fits a 380px by 600px viewport. The switch leads the hierarchy, with view/session tabs separating tasks. Named presets and the five-minute pause have visible status. Keyboard timer selection exposed a stale Start label; rendering was corrected and tested. A final pass found that Pause still looked actionable during a voluntary lock; it now shows an explicit unavailable label and is disabled, with a browser regression assertion.
 
 Final inspection: compact view has clear hierarchy and readable controls; dark session view remains legible. Expanded advanced controls can scroll. No time-saved claims or unsupported classification are shown.
 
