@@ -6,11 +6,16 @@ Choose your view. Keep your intention.
 
 ## Description
 
-Popup view/session navigation; compact preset-first layout; up to ten named presets; reversible five-minute hiding pause with automatic return; keyboard timer correction; light and dark appearances.
+Prilagodite YouTube svojemu namenu. Focus Mode vam pomaga skriti izbrane moteče elemente, medtem ko iščete videe in gledate vsebine.
 
-Your data stays in this Chrome profile. No account or analytics service is required. Existing settings and records are retained on upgrade. Back up important data before changing browsers or removing an extension.
+• Vklopite ali izklopite Focus z enim stikalom
+• Izberite, katere dele strani želite skriti
+• Shranite do 10 osebnih načinov z lastnimi imeni
+• Začasno ustavite skrivanje za pet minut
+• Po želji nastavite časovno omejeno sejo Focus
+• Izberite svetel ali temen videz
 
-YouTube layouts vary. No ads, categorization or guaranteed distraction prevention claims. Voluntary locks can be bypassed by disabling the extension.
+Vaše nastavitve so shranjene v brskalniku. YouTube pogosto spreminja postavitev strani, zato se lahko del filtrov ob spremembah spletnega mesta obnaša drugače. Razširitev ne razvršča vsebine in ne obljublja prihranka časa.
 
 ## Update notes
 
