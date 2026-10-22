@@ -1,0 +1,44 @@
+[
+  {
+    "repo": "YouTube-focus",
+    "version": "3.2.0",
+    "file": "youtube-focus-mode-v3.2.0.zip",
+    "sha256": "e2044af640a6169c572bc7ff8988c0e561337be9d37478747071ed0b3f085569",
+    "bytes": 22603,
+    "permissionsUnchanged": true,
+    "sourceCommit": "02596489cf4d19653a3c4735436ac8cef9111215",
+    "pullRequest": "https://github.com/flegardev/YouTube-focus/pull/6",
+    "ciRun": "https://github.com/flegardev/YouTube-focus/actions/runs/39744305348",
+    "uploaded": false,
+    "submitted": false,
+    "published": false
+  },
+  {
+    "repo": "Avtonet-garage",
+    "version": "1.2.0",
+    "file": "avtonet-garaza-1.2.0.zip",
+    "sha256": "24da55112a1eebc44ad5f5b836e832d0c060b778b8f533ff9aadf011c2aedf92",
+    "bytes": 144670,
+    "permissionsUnchanged": true,
+    "sourceCommit": "2fd94c8c7497708d835567b301b48debfc5adf82",
+    "pullRequest": "https://github.com/flegardev/Avtonet-garage/pull/6",
+    "ciRun": "https://github.com/flegardev/Avtonet-garage/actions/runs/39744298257",
+    "uploaded": false,
+    "submitted": false,
+    "published": false
+  },
+  {
+    "repo": "Auto-life-logger",
+    "version": "2.3.0",
+    "file": "auto-life-logger-extension-2.3.0.zip",
+    "sha256": "976a1e155b87cb0d29c04868759330196e5e0a387d7ef1f847183262ec92d85d",
+    "bytes": 74727,
+    "permissionsUnchanged": true,
+    "sourceCommit": "b71b40d4a60ebe5b9aef91b4c4056bc44094b56c",
+    "pullRequest": "https://github.com/flegardev/Auto-life-logger/pull/4",
+    "ciRun": "https://github.com/flegardev/Auto-life-logger/actions/runs/39744313336",
+    "uploaded": false,
+    "submitted": false,
+    "published": false
+  }
+]

@@ -39,3 +39,7 @@ Evidence comes from current public product pages, Store listings and individual 
 | Auto Life Logger | Browser-heavy worker curious about attention without sharing history | Understand recorded time and choose a modest goal | Weekly reflection and editable site rules; move score/milestone mechanics out of the popup hero |
 
 These are product hypotheses. Five real participants per product are still needed to assess desirability, confusion and retention; automated browser tests cannot establish product-market fit.
+
+## Public-page visual inspection
+
+Actual browser captures are in output/playwright/flagship/research in the workspace. Unhook presents a minimal product hero; SocialFocus shows a multi-site control interface; ActivityWatch illustrates a dense analytics dashboard; RescueTime leads with positioning and benefits; Drivvo illustrates expense tracking. Rize animation was not stable at capture time, AutoScout24 had a cookie layer obscuring part of its page, and mobile.de denied access. These observations do not substitute for signed-in onboarding or trial use.

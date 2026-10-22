@@ -1,0 +1,9 @@
+{
+  "scope": "One isolated Chromium run of packaged candidate with 10,000 synthetic records; not a cold-start or real-user benchmark",
+  "records": 10000,
+  "importMs": 1189,
+  "dashboardReviewReadyMs": 302,
+  "historyNavigationMs": 1807,
+  "dashboardJsHeapBytes": 3296596,
+  "passed": true
+}
