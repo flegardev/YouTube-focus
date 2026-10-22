@@ -1,0 +1,93 @@
+{
+  "environment": "Windows, headless bundled Chromium; disposable profiles; five warm reloads, not user-perceived cold startup or whole-process memory",
+  "products": [
+    {
+      "name": "youtube",
+      "variant": "baseline",
+      "readyMs": [
+        38,
+        29,
+        30,
+        26,
+        27
+      ],
+      "medianReadyMs": 29,
+      "heapBytes": 1442084,
+      "dynamic1000NodesTaskMs": 16.549999999999997,
+      "dynamicNodesHidden": true
+    },
+    {
+      "name": "youtube",
+      "variant": "redesign",
+      "readyMs": [
+        43,
+        25,
+        27,
+        25,
+        24
+      ],
+      "medianReadyMs": 25,
+      "heapBytes": 1452192,
+      "dynamic1000NodesTaskMs": 15.127999999999998,
+      "dynamicNodesHidden": true
+    },
+    {
+      "name": "avtonet",
+      "variant": "baseline",
+      "readyMs": [
+        154,
+        25,
+        31,
+        44,
+        34
+      ],
+      "medianReadyMs": 34,
+      "heapBytes": 2088600
+    },
+    {
+      "name": "avtonet",
+      "variant": "redesign",
+      "readyMs": [
+        115,
+        113,
+        25,
+        23,
+        25
+      ],
+      "medianReadyMs": 25,
+      "heapBytes": 1934468
+    },
+    {
+      "name": "logger",
+      "variant": "baseline",
+      "readyMs": [
+        65,
+        23,
+        30,
+        27,
+        40
+      ],
+      "medianReadyMs": 30,
+      "heapBytes": 2180564
+    },
+    {
+      "name": "logger",
+      "variant": "redesign",
+      "readyMs": [
+        37,
+        31,
+        64,
+        26,
+        21
+      ],
+      "medianReadyMs": 31,
+      "heapBytes": 1812116
+    }
+  ],
+  "largeHistory": {
+    "records": 100000,
+    "aggregationMs": 5.335399999999936,
+    "totalSeconds": 3000000,
+    "note": "Pure aggregation only; not full import/storage/dashboard memory."
+  }
+}

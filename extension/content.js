@@ -20,6 +20,8 @@
   let theme = FocusModeStorage.DEFAULT_THEME;
   let lastPath = location.pathname;
   let applyTimer = 0;
+  let pauseUntil = 0;
+  let pauseTimer = 0;
 
   initialize();
 
@@ -27,8 +29,16 @@
     injectStyles();
     bindNavigation();
     bindStorage();
+    const updatePause = value => {
+      pauseUntil = Math.min(Number(value) || 0, Date.now() + 300000);
+      window.clearTimeout(pauseTimer);
+      if (pauseUntil > Date.now()) pauseTimer = window.setTimeout(queueApply, pauseUntil - Date.now() + 10);
+      queueApply();
+    };
+    chrome.storage.local.get(['focusModePauseUntil'], data => updatePause(data?.focusModePauseUntil));
     FocusPreferences.get().then(value => { preferences = value; queueApply(); }).catch(() => {});
     chrome.storage.onChanged.addListener((changes, area) => {
+      if (area === 'local' && changes.focusModePauseUntil) updatePause(changes.focusModePauseUntil.newValue);
       if (area === 'local' && changes[FocusPreferences.KEY]) { preferences = FocusPreferences.normalize(changes[FocusPreferences.KEY].newValue); queueApply(); }
     });
 
@@ -111,7 +121,7 @@
     theme = FocusModeStorage.normalizeTheme(theme);
 
     const route = getRouteState();
-    const focusOn = state.focusEnabled;
+    const focusOn = state.focusEnabled && (FocusModeStorage.isLocked(state) || pauseUntil <= Date.now());
     const root = document.documentElement;
 
     root.classList.toggle("yt-focus-enabled", focusOn);

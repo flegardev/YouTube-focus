@@ -145,6 +145,7 @@ test("smoke: popup loads, persists state, validates forms, and captures requeste
 
     await expect(page.getByRole("heading", { name: "Focus Mode" })).toBeVisible();
     await expect(page.getByRole("switch", { name: "Toggle Focus Mode" })).toBeVisible();
+    await page.getByRole('button', {name:'Focus session',exact:true}).click();
     await expect(page.getByRole("radio", { name: "25m" })).toBeVisible();
     await expect(page.getByRole("button", { name: "Support the creator" })).toBeVisible();
 

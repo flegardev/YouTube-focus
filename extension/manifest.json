@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "YouTube Focus Mode",
-  "version": "3.1.0",
-  "description": "Strip YouTube down to search and video only, with optional timed focus sessions.",
+  "version": "3.2.0",
+  "description": "Prilagodite prikaz YouTube z osebnimi načini, nastavljivimi filtri in časovno omejenim odmorom.",
   "permissions": [
     "storage"
   ],

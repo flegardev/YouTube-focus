@@ -83,6 +83,7 @@ test("popup supports focus, theme, and custom lock flows", async ({ page }) => {
   await page.getByRole("button", { name: "Toggle theme" }).click();
   await expect(page.locator("body")).toHaveAttribute("data-theme", "dark");
 
+  await page.getByRole('button', { name:'Focus session', exact:true }).click();
   await page.getByRole("radio", { name: "Custom" }).click();
   await page.getByLabel("Minutes").fill("0");
   await expect(page.getByText("Enter a whole number from 1 to 480.")).toBeVisible();
@@ -112,6 +113,7 @@ test("popup remains usable at narrow mobile width", async ({ page }) => {
   await page.goto(popupUrl);
 
   await expect(page.getByRole("heading", { name: "Focus Mode" })).toBeVisible();
+  await page.getByRole('button', { name:'Focus session', exact:true }).click();
   await expect(page.getByRole("radio", { name: "25m" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Start 25m soft lock" })).toBeVisible();
 

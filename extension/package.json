@@ -1,6 +1,6 @@
 {
   "name": "youtube-focus-mode",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "private": true,
   "description": "A Chrome extension that hides distracting YouTube surfaces for intentional watching.",
   "scripts": {
@@ -14,7 +14,8 @@
     "build": "node scripts/build-release.mjs",
     "package": "npm run build",
     "build:win": "powershell -ExecutionPolicy Bypass -File scripts/build-release.ps1",
-    "test:extension": "node scripts/extension-smoke.cjs"
+    "test:extension": "node scripts/extension-smoke.cjs && node scripts/flagship-journeys.cjs",
+    "test:flagship": "node scripts/flagship-journeys.cjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
