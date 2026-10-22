@@ -7,23 +7,23 @@ Status: review candidates, not published products. All three redesigns are on de
 Build with `npm ci` then `npm run package` in `extension/` for Garage/YouTube, or the repository root for Logger. Use the commit below. These ZIPs are newly built flagship candidates, separate from the earlier 1.1.0/3.1.0/2.2.0 artifacts. Two consecutive local builds were byte-identical. ZIP integrity, manifest version and unchanged permission arrays were verified.
 
 ### YouTube-focus 3.2.0
-- Source: `02596489cf4d19653a3c4735436ac8cef9111215`
+- Source: `4c6d30f4881a4e4306ecb501efe59e423fe7896a`
 - Review: [PR #6](https://github.com/flegardev/YouTube-focus/pull/6)
-- CI: [run 39744305348](https://github.com/flegardev/YouTube-focus/actions/runs/39744305348)
-- ZIP: `youtube-focus-mode-v3.2.0.zip` (22,603 bytes)
-- SHA-256: `e2044af640a6169c572bc7ff8988c0e561337be9d37478747071ed0b3f085569`
+- CI: [run 39745255683](https://github.com/flegardev/YouTube-focus/actions/runs/39745255683)
+- ZIP: `youtube-focus-mode-v3.2.0.zip` (22,686 bytes)
+- SHA-256: `6277e62954b0c85ffce4de62d147a708f8399c26d777e32e7f27949883236f8e`
 
 ### Avtonet-garage 1.2.0
-- Source: `2fd94c8c7497708d835567b301b48debfc5adf82`
+- Source: `f2872ed1ac32f9080e7544d95bebb503b7a6fda7`
 - Review: [PR #6](https://github.com/flegardev/Avtonet-garage/pull/6)
-- CI: [run 39744298257](https://github.com/flegardev/Avtonet-garage/actions/runs/39744298257)
+- CI: [run 39744814255](https://github.com/flegardev/Avtonet-garage/actions/runs/39744814255)
 - ZIP: `avtonet-garaza-1.2.0.zip` (144,670 bytes)
 - SHA-256: `24da55112a1eebc44ad5f5b836e832d0c060b778b8f533ff9aadf011c2aedf92`
 
 ### Auto-life-logger 2.3.0
-- Source: `b71b40d4a60ebe5b9aef91b4c4056bc44094b56c`
+- Source: `3e14b6a953d0428ee831b737854ea9106bc88e84`
 - Review: [PR #4](https://github.com/flegardev/Auto-life-logger/pull/4)
-- CI: [run 39744313336](https://github.com/flegardev/Auto-life-logger/actions/runs/39744313336)
+- CI: [run 39744815757](https://github.com/flegardev/Auto-life-logger/actions/runs/39744815757)
 - ZIP: `auto-life-logger-extension-2.3.0.zip` (74,727 bytes)
 - SHA-256: `976a1e155b87cb0d29c04868759330196e5e0a387d7ef1f847183262ec92d85d`
 
